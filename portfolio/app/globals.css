@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scroll bar'ı gizle */
+html {
+  scrollbar-width: none; /* Firefox için */
+  -ms-overflow-style: none; /* IE ve Edge için */
+}
+
+/* Webkit (Chrome, Safari) için scroll bar'ı gizle */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sayfa içeriğinin scroll edilebilirliğini koru */
+html, body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-text-primary;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    @apply bg-gradient-primary;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply bg-secondary text-text-primary px-8 py-3 rounded-lg 
+    hover:bg-opacity-90 transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-secondary text-secondary px-8 py-3 rounded-lg 
+    hover:bg-secondary hover:text-text-primary transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-6 text-text-primary;
+  }
+
+  .card {
+    @apply bg-card-bg rounded-lg p-6 border border-border
+    hover:bg-hover transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply text-text-secondary hover:text-text-primary 
+    transition-colors duration-300;
+  }
+
+  .hover-translate {
+    @apply transform transition-transform duration-300 
+    hover:-translate-y-2;
+  }
+
+  .expertise-card {
+    @apply bg-card-bg border border-border rounded-lg p-6
+    hover:border-secondary transition-all duration-300;
+  }
+
+  .work-card {
+    @apply bg-card-bg rounded-lg overflow-hidden
+    hover:transform hover:scale-[1.02] transition-all duration-300;
+  }
+
+  .experience-item {
+    @apply border-l-2 border-border pl-6 py-4
+    hover:border-secondary transition-all duration-300;
+  }
+}
