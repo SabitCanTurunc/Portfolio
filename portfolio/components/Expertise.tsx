@@ -1,37 +1,55 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const expertiseData = [
-  {
-    title: (
-      <span className="inline-block border-b-4 border-pink-500 px-2 pb-1">Backend Dev</span>
-    ),
-    subtitle: 'Python, Java',
-    description: 'Python, Java, JavaScript, TypeScript konularında deneyimli.',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 mx-auto mb-4 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-  {
-    title: (
-      <span className="inline-block border-b-4 border-blue-500 px-2 pb-1">Frontend Dev</span>
-    ),
-    subtitle: 'Angular, Nextjs',
-    description: 'HTML, CSS, JS, Angular, React ve NextJS framework\'leri ile en az 2 proje geliştirme deneyimi.',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 mx-auto mb-4 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-]
+import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react'
+import '../i18n'
 
 const Expertise = () => {
+  const { t } = useTranslation()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const expertiseData = [
+    {
+      title: (
+        <span className="inline-block border-b-4 border-pink-500 px-2 pb-1">
+          {t('expertise.backend.title')}
+        </span>
+      ),
+      subtitle: t('expertise.backend.subtitle'),
+      description: t('expertise.backend.description'),
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 mx-auto mb-4 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: (
+        <span className="inline-block border-b-4 border-blue-500 px-2 pb-1">
+          {t('expertise.frontend.title')}
+        </span>
+      ),
+      subtitle: t('expertise.frontend.subtitle'),
+      description: t('expertise.frontend.description'),
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 mx-auto mb-4 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+  ]
+
+  if (!mounted) {
+    return null
+  }
+
   return (
-    <section id="expertise" className="py-20 relative bg-primary">
+    <section id="expertise" className="py-8 relative bg-primary">
       {/* Arka plan kodu */}
       <div 
         className="absolute inset-0"
@@ -54,7 +72,7 @@ const Expertise = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-text-primary">
-            Uzmanlık Alanlarım
+            {t('expertise.title')}
           </h2>
         </motion.div>
 

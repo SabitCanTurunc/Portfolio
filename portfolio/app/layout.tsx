@@ -8,8 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sabit Can Turunç - Yazılım Mühendisi",
-  description: "Frontend ve Uygulama Geliştirici",
+  title: "Sabit Can Turunç - Portfolio",
+  description: "Sabit Can Turunç kişisel portfolio web sitesi",
 };
 
 export default function RootLayout({

@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import '../i18n'
 
 const menuItems = [
   { title: 'home', href: '#home' },
@@ -28,6 +30,22 @@ const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hre
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { t, i18n } = useTranslation()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'tr' ? 'en' : 'tr'
+    i18n.changeLanguage(newLang)
+    localStorage.setItem('i18nextLng', newLang)
+  }
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <nav className="fixed w-full bg-black/90 backdrop-blur-sm z-50 py-3 shadow-lg">
@@ -36,7 +54,7 @@ const Navbar = () => {
           Sabit Can Turunç
         </a>
         {/* Masaüstü Menü */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {menuItems.map((item) => (
             <a
               key={item.href}
@@ -44,38 +62,52 @@ const Navbar = () => {
               onClick={e => scrollToSection(e, item.href)}
               className="uppercase text-white/80 hover:text-cyan-400 font-semibold tracking-wide transition-colors duration-200 px-2 py-1 nav-link"
             >
-              {'// ' + item.title}
+              {'// ' + t(`nav.${item.title}`)}
             </a>
           ))}
+          <button
+            onClick={toggleLanguage}
+            className="px-3 py-1 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white font-medium transition-colors duration-200"
+          >
+            {i18n.language === 'tr' ? 'EN' : 'TR'}
+          </button>
         </div>
         {/* Mobil Menü Butonu */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <svg
-            className="w-7 h-7"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="md:hidden flex items-center space-x-4">
+          <button
+            onClick={toggleLanguage}
+            className="px-3 py-1 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white font-medium transition-colors duration-200"
           >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+            {i18n.language === 'tr' ? 'EN' : 'TR'}
+          </button>
+          <button
+            className="text-white"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <svg
+              className="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
       {/* Mobil Menü */}
       {isOpen && (
@@ -93,7 +125,7 @@ const Navbar = () => {
                 onClick={e => { scrollToSection(e, item.href); setIsOpen(false); }}
                 className="uppercase text-white/80 hover:text-cyan-400 font-semibold tracking-wide transition-colors duration-200 px-2 py-1 nav-link"
               >
-                {'// ' + item.title}
+                {'// ' + t(`nav.${item.title}`)}
               </a>
             ))}
           </div>

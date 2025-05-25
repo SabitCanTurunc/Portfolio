@@ -1,0 +1,9 @@
+{
+  "nav": {
+    "home": "home",
+    "expertise": "expertise",
+    "work": "work",
+    "experience": "experience",
+    "contact": "contact"
+  }
+} 
