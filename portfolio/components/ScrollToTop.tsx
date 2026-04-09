@@ -1,18 +1,13 @@
 "use client"
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { FaArrowUp } from 'react-icons/fa';
 
 // Türkçe açıklamalı scroll-to-top butonu
 const ScrollToTop = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -36,8 +31,6 @@ const ScrollToTop = () => {
       behavior: 'smooth',
     });
   };
-
-  if (!mounted) return null;
 
   return (
     <>

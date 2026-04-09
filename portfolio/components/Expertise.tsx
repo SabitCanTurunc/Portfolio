@@ -1,17 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import { useState, useEffect } from 'react'
-import '../i18n'
+import { useTranslations } from 'next-intl'
 
 const Expertise = () => {
-  const { t } = useTranslation()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const t = useTranslations()
 
   const expertiseData = [
     {
@@ -44,14 +37,10 @@ const Expertise = () => {
     },
   ]
 
-  if (!mounted) {
-    return null
-  }
-
   return (
     <section id="expertise" className="py-8 relative bg-primary">
       {/* Arka plan kodu */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage: 'url("/hello-world-html-code.webp")',

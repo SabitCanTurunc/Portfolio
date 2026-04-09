@@ -6,6 +6,7 @@
 html {
   scrollbar-width: none; /* Firefox için */
   -ms-overflow-style: none; /* IE ve Edge için */
+  scroll-behavior: smooth;
 }
 
 /* Webkit (Chrome, Safari) için scroll bar'ı gizle */

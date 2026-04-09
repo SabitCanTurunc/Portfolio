@@ -1,19 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import { useState, useEffect } from 'react'
-import '../i18n'
+import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
+import type { ExperienceItem } from '@/types/content'
 
 const Experience = () => {
-  const { t } = useTranslation()
-  const [mounted, setMounted] = useState(false)
+  const t = useTranslations()
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const experiences = [
+  const fallbackExperiences: Omit<ExperienceItem, '_id' | 'order'>[] = [
     {
       title: t('experience.items.mantis.title'),
       company: t('experience.items.mantis.company'),
@@ -21,7 +16,7 @@ const Experience = () => {
       location: t('experience.items.mantis.location'),
       website: 'mantis.com.tr',
       description: t('experience.items.mantis.description'),
-      skills: ['Java', 'Angular', 'Pyhton', 'SpringBoot', 'FastaPi'],
+      skills: ['Java', 'Angular', 'Python', 'Spring Boot', 'FastAPI'],
     },
     {
       title: t('experience.items.smartpulse.title'),
@@ -30,7 +25,7 @@ const Experience = () => {
       location: t('experience.items.smartpulse.location'),
       website: 'www.smartpulse.io',
       description: t('experience.items.smartpulse.description'),
-      skills: ['C#','.Net','Angular'],
+      skills: ['C#', '.Net', 'Angular'],
     },
     {
       title: t('experience.items.blockchain.title'),
@@ -39,13 +34,35 @@ const Experience = () => {
       location: t('experience.items.blockchain.location'),
       website: '',
       description: t('experience.items.blockchain.description'),
-      skills: ['JS', 'Smart Contrats', 'Solidity', 'CSS', 'Nodejs'],
+      skills: ['JavaScript', 'Smart Contracts', 'Solidity', 'CSS', 'Node.js'],
     },
   ]
+  const [experiences, setExperiences] = useState<ExperienceItem[]>([])
 
-  if (!mounted) {
-    return null
-  }
+  useEffect(() => {
+    const loadExperiences = async () => {
+      try {
+        const response = await fetch('/api/experiences', { cache: 'no-store' })
+        if (!response.ok) {
+          return
+        }
+        const data = (await response.json()) as ExperienceItem[]
+        setExperiences(data)
+      } catch {
+        setExperiences([])
+      }
+    }
+
+    void loadExperiences()
+  }, [])
+
+  const displayedExperiences = experiences.length > 0
+    ? experiences
+    : fallbackExperiences.map((item, index) => ({
+      _id: `fallback-${index}`,
+      order: index,
+      ...item
+    }))
 
   return (
     <section id="experience" className="py-8 relative">
@@ -63,17 +80,17 @@ const Experience = () => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto space-y-12 pb-32">
-          {experiences.map((exp, index) => (
+          {displayedExperiences.map((exp, index) => (
             <motion.div
               key={exp.company}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative pl-8 ${index !== experiences.length - 1 ? 'border-l-2 border-border' : ''}`}
+              className={`relative pl-8 ${index !== displayedExperiences.length - 1 ? 'border-l-2 border-border' : ''}`}
             >
               {/* Timeline çizgisinin gradient ile bitişi */}
-              {index === experiences.length - 1 && (
+              {index === displayedExperiences.length - 1 && (
                 <div className="absolute left-0 top-0 w-0.5 h-24 bg-gradient-to-b from-border to-transparent" />
               )}
               <div className="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-secondary"></div>

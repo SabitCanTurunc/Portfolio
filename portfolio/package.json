@@ -6,18 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:experiences": "tsx scripts/seed-experiences.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@next-auth/mongodb-adapter": "^1.1.3",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
     "framer-motion": "^12.12.2",
-    "i18next": "^25.2.1",
-    "i18next-browser-languagedetector": "^8.1.0",
+    "mongodb": "^5.9.2",
+    "mongoose": "^9.4.1",
     "next": "15.1.8",
-    "next-i18next": "^15.4.2",
+    "next-auth": "^4.24.13",
+    "next-intl": "^4.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.0.0",
-    "react-i18next": "^15.5.2"
+    "react-icons": "^5.6.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -26,11 +31,13 @@
     "@types/react-dom": "^19.1.5",
     "@types/tailwindcss": "^3.0.11",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^17.4.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.8",
     "postcss": "^8.4.31",
     "postcss-nesting": "^12.0.1",
     "tailwindcss": "^3.3.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3"
   }
 }

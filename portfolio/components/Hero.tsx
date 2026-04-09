@@ -3,8 +3,7 @@
 import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import '../i18n'
+import { useTranslations } from 'next-intl'
 
 const ANIMATION_DURATION = 600 // ms
 
@@ -13,20 +12,18 @@ const useMediaQuery = (query: string) => {
 
   useEffect(() => {
     const media = window.matchMedia(query)
-    if (media.matches !== matches) {
-      setMatches(media.matches)
-    }
-    const listener = () => setMatches(media.matches)
+    setMatches(media.matches)
+    const listener = (event: MediaQueryListEvent) => setMatches(event.matches)
     media.addEventListener('change', listener)
     return () => media.removeEventListener('change', listener)
-  }, [matches, query])
+  }, [query])
 
   return matches
 }
 
 const Hero = () => {
   const containerRef = useRef(null)
-  const { t } = useTranslation()
+  const t = useTranslations()
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -37,11 +34,6 @@ const Hero = () => {
   const [hoveredSide, setHoveredSide] = useState<null | 'designer' | 'coder'>(null)
   const [zIndexSide, setZIndexSide] = useState<null | 'designer' | 'coder'>(null)
   const [selectedSide, setSelectedSide] = useState<null | 'designer' | 'coder'>(null)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     if (hoveredSide) {
@@ -56,10 +48,6 @@ const Hero = () => {
     setSelectedSide(selectedSide === side ? null : side)
   }
 
-  if (!mounted) {
-    return null
-  }
-
   return (
     <div ref={containerRef} className="h-screen w-full relative z-20 mt-20 overflow-hidden bg-primary flex items-center  md:pt-32">
       {/* Sol Taraf - Coder */}
@@ -69,9 +57,9 @@ const Hero = () => {
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ 
+        animate={{
           opacity: selectedSide === 'coder' ? 1 : 0,
-          y: selectedSide === 'coder' ? 0 : 20 
+          y: selectedSide === 'coder' ? 0 : 20
         }}
         className="absolute left-4 bottom-20 z-40 text-left md:hidden"
       >
@@ -110,9 +98,9 @@ const Hero = () => {
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ 
+        animate={{
           opacity: selectedSide === 'designer' ? 1 : 0,
-          y: selectedSide === 'designer' ? 0 : 20 
+          y: selectedSide === 'designer' ? 0 : 20
         }}
         className="absolute right-4 bottom-20 z-40 text-right md:hidden"
       >
@@ -150,7 +138,7 @@ const Hero = () => {
           {/* Coder Fotoğrafı */}
           <motion.div
             style={{
-              transform: `translateY(${imageY})`,
+              y: imageY,
               zIndex: zIndexSide === 'coder' ? 30 : 20
             }}
             className="absolute inset-0 w-full h-full"
@@ -185,7 +173,7 @@ const Hero = () => {
           {/* Problem Çözücü Fotoğrafı */}
           <motion.div
             style={{
-              transform: `translateY(${imageY})`,
+              y: imageY,
               zIndex: zIndexSide === 'designer' ? 30 : 20
             }}
             className="absolute inset-0 w-full h-full"

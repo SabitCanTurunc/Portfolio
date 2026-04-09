@@ -1,0 +1,96 @@
+{
+    "nav": {
+        "home": "home",
+        "expertise": "expertise",
+        "work": "work",
+        "experience": "experience",
+        "contact": "contact"
+    },
+    "hero": {
+        "coder": {
+            "title": "<coder/>",
+            "description": "Full-stack developer, experienced in writing clean and effective code."
+        },
+        "problemSolver": {
+            "title": "trouble chief",
+            "description": "I carefully analyze complex problems and produce practical and lasting software solutions."
+        }
+    },
+    "expertise": {
+        "title": "My Expertise",
+        "backend": {
+            "title": "Backend Dev",
+            "subtitle": "Python, Java",
+            "description": "Experienced in Python, Java, JavaScript, TypeScript."
+        },
+        "frontend": {
+            "title": "Frontend Dev",
+            "subtitle": "Angular, Nextjs",
+            "description": "Experience in developing at least 2 projects with HTML, CSS, JS, Angular, React and NextJS frameworks."
+        }
+    },
+    "experience": {
+        "title": "Professional Experience",
+        "items": {
+            "mantis": {
+                "title": "Intern Software Developer",
+                "company": "Mantis Software",
+                "period": "02-2025 - Present",
+                "location": "Ankara, Turkey",
+                "description": "Long term intern Full-Stack developer."
+            },
+            "smartpulse": {
+                "title": "Intern Software Developer",
+                "company": "SmartPusle Tech.",
+                "period": "06-09.2024",
+                "location": "Istanbul, Turkey",
+                "description": "Short term intern Full-Stack developer."
+            },
+            "blockchain": {
+                "title": "Co-Founder",
+                "company": "CBU BLOCKCHAIN",
+                "period": "2022-2025",
+                "location": "Remote (Manisa, Turkey)",
+                "description": "A community that organizes events, develops projects in hackathons, and aims to develop the team and contribute to society."
+            }
+        }
+    },
+    "work": {
+        "title": "My Work",
+        "openProjectLink": "Open project in new tab",
+        "projects": {
+            "convexus": {
+                "title": "Convexus",
+                "subtitle": "AI powered sales assistant",
+                "category": "Web Development"
+            },
+            "neowrite": {
+                "title": "NeoWrite",
+                "subtitle": "AI powered blog platform",
+                "category": "Web Development"
+            },
+            "stepofhope": {
+                "title": "Step Of Hope",
+                "subtitle": "Blockchain based crowdfunding platform",
+                "category": "Web Development"
+            }
+        }
+    },
+    "contact": {
+        "title": "Available for select freelance opportunities",
+        "description": "Have an exciting project you need help with?",
+        "cta": "Send me an email or contact me via instant message!",
+        "social": {
+            "linkedin": "LinkedIn",
+            "instagram": "Instagram",
+            "github": "Github"
+        }
+    },
+    "footer": {
+        "copyright": "© {year}. Made with passion by Sabit Can Turunç.",
+        "rights": "All rights reserved."
+    },
+    "scrollToTop": {
+        "ariaLabel": "Scroll to top"
+    }
+}

@@ -1,17 +1,7 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslations } from 'next-intl'
 
 const Footer = () => {
-  const { t } = useTranslation()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
+  const t = useTranslations()
 
   return (
     <footer className="py-5 text-center">

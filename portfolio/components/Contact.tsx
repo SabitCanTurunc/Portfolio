@@ -1,25 +1,17 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslations } from 'next-intl'
 import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
 const Contact = () => {
-  const { t } = useTranslation()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
+  const t = useTranslations()
 
   return (
     <section id="contact" className="relative -mt-32 py-20 px-4 md:py-32 bg-transparent overflow-hidden">
       {/* Arka plan efekti */}
       <div className="absolute inset-0 -top-64">
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-b from-card-bg via-card-bg to-card-bg"
           style={{ backdropFilter: 'blur(100px)' }}
         />
@@ -28,7 +20,7 @@ const Contact = () => {
       </div>
 
       <div className="relative max-w-4xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -46,7 +38,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

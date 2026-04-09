@@ -1,0 +1,96 @@
+{
+    "nav": {
+        "home": "ana sayfa",
+        "expertise": "uzmanlık",
+        "work": "projeler",
+        "experience": "deneyim",
+        "contact": "iletişim"
+    },
+    "hero": {
+        "coder": {
+            "title": "<coder/>",
+            "description": "Full-stack geliştirici, temiz ve etkili kod yazma konusunda deneyimli."
+        },
+        "problemSolver": {
+            "title": "dert babası",
+            "description": "Karmaşık problemleri dikkatle inceler, pratik ve kalıcı yazılım çözümleri üretirim."
+        }
+    },
+    "expertise": {
+        "title": "Uzmanlık Alanlarım",
+        "backend": {
+            "title": "Backend Dev",
+            "subtitle": "Python, Java",
+            "description": "Python, Java, JavaScript, TypeScript konularında deneyimli."
+        },
+        "frontend": {
+            "title": "Frontend Dev",
+            "subtitle": "Angular, Nextjs",
+            "description": "HTML, CSS, JS, Angular, React ve NextJS framework'leri ile en az 2 proje geliştirme deneyimi."
+        }
+    },
+    "experience": {
+        "title": "Profesyonel Deneyim",
+        "items": {
+            "mantis": {
+                "title": "Stajyer Yazılım Geliştirici",
+                "company": "Mantis Software",
+                "period": "02-2025 - Günümüz",
+                "location": "Ankara, Türkiye",
+                "description": "Uzun dönem Full-Stack stajyer geliştirici."
+            },
+            "smartpulse": {
+                "title": "Stajyer Yazılım Geliştirici",
+                "company": "SmartPusle Tech.",
+                "period": "06-09.2024",
+                "location": "İstanbul, Türkiye",
+                "description": "Kısa dönem Full-Stack stajyer geliştirici."
+            },
+            "blockchain": {
+                "title": "Kurucu Ortak",
+                "company": "CBU BLOCKCHAIN",
+                "period": "2022-2025",
+                "location": "Uzaktan (Manisa, Türkiye)",
+                "description": "Etkinlikler düzenleyen, hackathonlarda projeler geliştiren, ekibi geliştirmeyi ve topluma katkı sağlamayı amaçlayan bir topluluk."
+            }
+        }
+    },
+    "work": {
+        "title": "Çalışmalarım",
+        "openProjectLink": "Projeyi yeni sekmede aç",
+        "projects": {
+            "convexus": {
+                "title": "Convexus",
+                "subtitle": "Yapay zeka destekli satış asistanı",
+                "category": "Web Geliştirme"
+            },
+            "neowrite": {
+                "title": "NeoWrite",
+                "subtitle": "Yapay zeka destekli blog platformu",
+                "category": "Web Geliştirme"
+            },
+            "stepofhope": {
+                "title": "Step Of Hope",
+                "subtitle": "Blockchain tabanlı bağış platformu",
+                "category": "Web Geliştirme"
+            }
+        }
+    },
+    "contact": {
+        "title": "Seçkin freelance fırsatları için müsaitim",
+        "description": "Yardıma ihtiyacınız olan heyecan verici bir projeniz mi var?",
+        "cta": "Bana e-posta gönderin veya anlık mesaj yoluyla iletişime geçin!",
+        "social": {
+            "linkedin": "LinkedIn",
+            "instagram": "Instagram",
+            "github": "Github"
+        }
+    },
+    "footer": {
+        "copyright": "© {year}. Sabit Can Turunç tarafından tutkuyla yapıldı.",
+        "rights": "Tüm hakları saklıdır."
+    },
+    "scrollToTop": {
+        "ariaLabel": "Yukarı dön"
+    }
+}
